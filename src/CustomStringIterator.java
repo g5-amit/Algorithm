@@ -42,7 +42,6 @@ public class CustomStringIterator implements Iterable<Character>{
         CustomStringIterator itr = new CustomStringIterator("A2B3");
         for(Character c: itr){
             System.out.println("  "+c);
-
         }
 
     }

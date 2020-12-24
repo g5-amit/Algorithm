@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
-public class MyArrayList<T> implements Iterable<T> {
+public class CustomArrayListIterator<T> implements Iterable<T> {
 
     ArrayList<T> list = new ArrayList<>();
     int modCount;
@@ -17,11 +17,6 @@ public class MyArrayList<T> implements Iterable<T> {
             list.remove(index);
             modCount++;
         }
-    }
-
-    public void remove(T obj){
-        list.remove(obj);
-        modCount++;
     }
 
     @Override
@@ -64,7 +59,7 @@ public class MyArrayList<T> implements Iterable<T> {
                 throw new IllegalStateException("list is out of index");
             }
 
-            MyArrayList.this.remove(lastIndex);
+            CustomArrayListIterator.this.remove(lastIndex);
             currentIndex = lastIndex;
             expectedModCount = modCount;
         }
@@ -72,7 +67,7 @@ public class MyArrayList<T> implements Iterable<T> {
 
 
     public static void main(String[] args){
-        MyArrayList<Integer> myList = new MyArrayList<Integer>();
+        CustomArrayListIterator<Integer> myList = new CustomArrayListIterator<Integer>();
         myList.add(1);
         myList.add(2);
         myList.add(3);
